@@ -1,17 +1,19 @@
 // functions
 // funzione evento cambio colore al click del box
+let contatore=0;
 function createEvent(element, i) {
     element.addEventListener('click', function() {
-        this.classList.toggle('box-bg-color');
-        // se il numero corrispondente al box cliccato è presente nella lista dei numeri random, questo diventa rosso
         if(uniqueRandomList.includes(i)){
-           this.classList.add('red');
-           this.classList.remove('box-bg-color');
-           page.classList.add('op');
-           loseMessage.classList.remove('d-none')
+            this.classList.add('red');
+            page.classList.add('op');
+            loseMessage.classList.remove('d-none')
+        } else {
+            this.classList.add('box-bg-color');
+            contatore++;
         }
     })
 }
+// funzione vittoria
 
 // funzione per creare i box collegata all'evento
 function createNewBox(container, i){
