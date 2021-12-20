@@ -1,7 +1,7 @@
 // functions
 // funzione evento cambio colore al click del box
 let contatore=0;
-function createEvent(element, i) {
+function createEvent(element, i, maxCell) {
     element.addEventListener('click', function() {
         if(uniqueRandomList.includes(i)){
             this.classList.add('red');
@@ -10,23 +10,24 @@ function createEvent(element, i) {
         } else {
             this.classList.add('box-bg-color');
             contatore++;
+            win(maxCell);
         }
     })
 }
-// // definisco gli eventi legati alla vittoria della partita
-// function win (numCell) {
-//     if(contatore = numCell - 16) {
-//         page.classList.add('op');
-//         winMessage.classList.remove('d-none')
-//     }
-// }
+// definisco gli eventi legati alla vittoria della partita
+function win (maxCell) {
+    if(contatore === maxCell - 16) {
+        page.classList.add('op');
+        winMessage.classList.remove('d-none')
+    }
+}
 
 // funzione per creare i box collegata all'evento
-function createNewBox(container, i){
+function createNewBox(container, i, maxCell){
     const square = document.createElement('div');
     square.className = 'box';
     container.append(square); 
-    createEvent(square, i);
+    createEvent(square, i, maxCell);
 }
 
 // funzione per definire il numero di massimo di celle nella griglia
@@ -34,7 +35,7 @@ function createGrid(maxCell) {
     boxContainer.innerHTML = '';
     uniqueRandomList = [];
     for (let i = 0; i < maxCell; i++) {
-        createNewBox(boxContainer, i);
+        createNewBox(boxContainer, i, maxCell);
     }
 }
 
@@ -80,7 +81,6 @@ let uniqueRandomList = [];
 button1.addEventListener('click', function() {
     contatore = 0;
     createGrid(100);
-    // win(100);
     bombPosition(100);
     boxContainer.classList.add('level1');
     boxContainer.classList.remove('level2');
@@ -88,7 +88,6 @@ button1.addEventListener('click', function() {
 })
 button2.addEventListener('click', function() {
     createGrid(81);
-    // win(81);
     bombPosition(81);
     boxContainer.classList.add('level2');
     boxContainer.classList.remove('level1');
@@ -96,7 +95,6 @@ button2.addEventListener('click', function() {
 })
 button3.addEventListener('click', function() {
     createGrid(49);
-    bombPosition(49);
     boxContainer.classList.add('level3');
     boxContainer.classList.remove('level1');
     boxContainer.classList.remove('level2');
