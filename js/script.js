@@ -13,7 +13,13 @@ function createEvent(element, i) {
         }
     })
 }
-// funzione vittoria
+// // definisco gli eventi legati alla vittoria della partita
+// function win (numCell) {
+//     if(contatore = numCell - 16) {
+//         page.classList.add('op');
+//         winMessage.classList.remove('d-none')
+//     }
+// }
 
 // funzione per creare i box collegata all'evento
 function createNewBox(container, i){
@@ -29,13 +35,16 @@ function createGrid(maxCell) {
     uniqueRandomList = [];
     for (let i = 0; i < maxCell; i++) {
         createNewBox(boxContainer, i);
+    }
+}
 
-        // genero 16 numeri random univoci che inserisco poi nell'array uniqueRandomList
-        while (uniqueRandomList.length < 16) {
-            const randomNum = getNumber(1, maxCell);
-            if(!uniqueRandomList.includes(randomNum)) {
-                uniqueRandomList.push(randomNum);
-            }
+// funzione che definisce la posizione delle mine nela griglia
+function bombPosition (maxCell) {
+    // genero 16 numeri random univoci che inserisco poi nell'array uniqueRandomList
+    while (uniqueRandomList.length < 16) {
+        const randomNum = getNumber(1, maxCell);
+        if(!uniqueRandomList.includes(randomNum)) {
+            uniqueRandomList.push(randomNum);
         }
     }
 }
@@ -57,29 +66,37 @@ const button1 = document.getElementById('button-level1');
 const button2 = document.getElementById('button-level2');
 const button3 = document.getElementById('button-level3');
 
-// definisco la variabile dei collegamento all'messaggio lose
+// definisco la variabile dei collegamento all'messaggio lose and win
 const loseMessage = document.querySelector('.lose-message');
+const winMessage = document.querySelector('.win-message');
+
 // definisco la varibile del bottone refresh
-const refreshButton = document.getElementById('refresh-button')
+const refreshButton = document.querySelector('.refresh-button');
 
 // dichiaro l'array della lista numeri
 let uniqueRandomList = [];
 
 // definisco gli eventi click dei tre bottoni
 button1.addEventListener('click', function() {
+    contatore = 0;
     createGrid(100);
+    // win(100);
+    bombPosition(100);
     boxContainer.classList.add('level1');
     boxContainer.classList.remove('level2');
     boxContainer.classList.remove('level3');
 })
 button2.addEventListener('click', function() {
     createGrid(81);
+    // win(81);
+    bombPosition(81);
     boxContainer.classList.add('level2');
     boxContainer.classList.remove('level1');
     boxContainer.classList.remove('level3');
 })
 button3.addEventListener('click', function() {
     createGrid(49);
+    bombPosition(49);
     boxContainer.classList.add('level3');
     boxContainer.classList.remove('level1');
     boxContainer.classList.remove('level2');

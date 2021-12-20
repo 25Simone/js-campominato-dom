@@ -59,7 +59,7 @@ h2{
     font-size: 30px;
     font-family: sans-serif;
 }
-.lose-message{
+.message{
     text-align: center;
     color: red;
     font-size: 70px;
@@ -69,7 +69,7 @@ h2{
     transform: translate(-50%, -50%);
     z-index: 1001;
 }
-#refresh-button{
+.refresh-button{
     color: #fff;
     margin: 10px;
     font-size: 30px;
