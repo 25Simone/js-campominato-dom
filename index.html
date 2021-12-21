@@ -9,21 +9,19 @@
 </head>
 <body>
     <div class="page">
-        <h2>Difficulty Selection</h2>
+        <h2 class="title">Difficulty Selection</h2>
         <div class="buttons-container">
             <div class="button" id="button-level1">level 1</div>
             <div class="button" id="button-level2">level 2</div>
             <div class="button" id="button-level3">level 3</div>
         </div>
-        <div class="container"></div>
+        <div id="container"></div>
     </div>
-    <div class="message lose-message d-none">
-        You Lose
-        <div class="refresh-button">Try Again</div>
-    </div>
-    <div class="message win-message d-none">
-        You Win
-        <div class="refresh-button">Try Again</div>
+    <div class="message">
+        <h2 class="d-none" id="lose-message">You Lose</h2>
+        <h2 class="d-none" id="win-message">You Win</h2>
+        <div class="d-none" id="refresh-button">Try Again</div>
+        <div class="d-none" id="score"></div>
     </div>
     <script src="./js/script.js"></script>
 </body>
